@@ -1,9 +1,9 @@
 <template>
-<div>
-  <h3>Count down component</h3>
-  <h2 style="color:blueviolet"> {{ show ? 'TRUE' : 'FALSE' }}</h2>
-  <button @click='toggle()'>Toggle</button>
-</div>
+  <div>
+    <h3>Count down component</h3>
+    <h2 style="color:blueviolet"> {{ show ? 'TRUE' : 'FALSE' }}</h2>
+    <button @click='toggle()'>Toggle</button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -19,13 +19,21 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e:'khanh'):void
+  (e: 'khanh'): void
 }>()
 
-function toggle(){
+function toggle() {
   // props.setShow(!props.show)
   emit('khanh')
 }
+
+function hamBenTrong() {
+  console.log("Hello world")
+}
+
+defineExpose({
+  hamBenTrong
+})
 </script>
 
 <style scoped></style>
