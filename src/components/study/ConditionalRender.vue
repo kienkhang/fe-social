@@ -19,9 +19,9 @@
 
       <h2 class="text-lg font-bold">điều kiện render mềm (các tab không active sẽ display:none)</h2>
       <div class="border border-purple-500 rounded-lg content">
-        <p v-if='tab === 1'>Tab 1 render mềm</p>
-        <p v-if='tab === 2'>Tab 2 render mềm</p>
-        <p v-if='tab === 3'>Tab 3 render mềm</p>
+        <p v-show='tab === 1'>Tab 1 render mềm</p>
+        <p v-show='tab === 2'>Tab 2 render mềm</p>
+        <p v-show='tab === 3'>Tab 3 render mềm</p>
       </div>
     </div>
   </div>

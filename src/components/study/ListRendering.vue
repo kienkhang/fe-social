@@ -1,12 +1,17 @@
-<template>
-  <div class="text-center">
-    <h2 class="text-lg font-bold text-green-600">List rendering</h2>
-    <div class="p-2 space-y-2 border rounded-md">
-      <div class="space-y-2 rounded-lg content">
-        <UserCard v-for='user in list' :user='user' :key='user.id'></UserCard>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+//- <div class="text-center">
+//-   <h2 class="text-lg font-bold text-green-600">List rendering</h2>
+//-   <div class="p-2 space-y-2 border rounded-md">
+//-     <div class="space-y-2 rounded-lg content">
+//-       <UserCard v-for='user in list' :user='user' :key='user.id'></UserCard>
+//-     </div>
+//-   </div>
+//- </div>
+.text-center
+  h2(class="text-lg font-bold text-green-600") List rendering
+  .p-2.space-y-2.border.rounded-md
+    .space-y-2.rounded-lg.content
+      UserCard(v-for='user in list' :user='user' :key='user.id')
 </template>
 
 <script setup lang="ts">
@@ -28,6 +33,7 @@ function getList() {
 onMounted(() => {
   getList()
 })
+
 </script>
 
 <style scoped></style>
