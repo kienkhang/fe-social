@@ -1,4 +1,4 @@
-import { post } from "./resource";
+import { todos } from "./resource";
 import axios from "axios";
 import env from "../env";
 import _omit from "lodash-es/omit";
@@ -18,14 +18,16 @@ const client = axios.create({
   },
 });
 
-const resource = {
-  post,
-};
-
 const http = {
   client,
   callApi,
 };
+
+// =========== REGION MAIN RESOURCE =========
+const resource = {
+  todos,
+};
+// =========== END REGION MAIN RESOURCE =========
 
 function callApi(p: CallApiParams) {
   const [module, moduleName] = p.path.split(".");
@@ -66,7 +68,7 @@ function callApi(p: CallApiParams) {
   const config = {
     method: fullResource.method,
     headers: headers as any,
-    data: argument,
+    data: (p.data as any).body || {},
     url,
   };
 
