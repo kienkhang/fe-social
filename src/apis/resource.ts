@@ -10,13 +10,25 @@ export type ResourceParams = {
   [x: string]: ResourceParam;
 };
 
-export const post: ResourceParams = {
-  post_id: {
+export const todos: ResourceParams = {
+  get_all: {
     method: "GET",
-    url: "/posts/{post_id}",
+    url: "/todos",
   },
-  comment: {
+  get_id: {
+    method: "GET",
+    url: "/todos/{id}",
+  },
+  create_todo: {
     method: "POST",
-    url: "/comments/{post_id}",
+    url: "/todos",
+  },
+  delete_todo: {
+    method: "DELETE",
+    url: "/todos/{id}",
+  },
+  update_todo: {
+    method: "PATCH",
+    url: "/todos/{id}",
   },
 };
