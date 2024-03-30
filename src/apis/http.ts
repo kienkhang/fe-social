@@ -11,6 +11,13 @@ export type CallApiParams = {
   config?: object;
 };
 
+export type CallGraphqlParams = {
+  query: string;
+  variables?: object;
+  baseUrl?: string;
+  headers?: object;
+};
+
 const client = axios.create({
   baseURL: env.BASE_URL,
   headers: {
@@ -21,6 +28,7 @@ const client = axios.create({
 const http = {
   client,
   callApi,
+  callGraphql,
 };
 
 // =========== REGION MAIN RESOURCE =========
@@ -77,4 +85,19 @@ function callApi(p: CallApiParams) {
   });
 }
 
+function callGraphql(p: CallGraphqlParams) {
+  const config = {
+    method: "POST",
+    headers: p.headers as any,
+    data: {
+      query: p.query,
+      variables: p.variables,
+    },
+    url: p.baseUrl || env.GRAPHQL_BASE_URL,
+  };
+
+  return client.request(config).catch((e) => {
+    throw e;
+  });
+}
 export default http;
