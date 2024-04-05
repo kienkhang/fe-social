@@ -12,7 +12,8 @@ export type CallApiParams = {
 };
 
 const client = axios.create({
-  baseURL: env.BASE_URL,
+  // baseURL: env.BASE_URL,
+  baseURL: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },

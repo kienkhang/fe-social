@@ -16,24 +16,23 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import axios from 'axios'
+import axios from "axios";
 
-import type { User } from '@/types/user'
+import type { User } from "@/types/User";
 
-import UserCard from './user/UserCard.vue'
+import UserCard from "./user/UserCard.vue";
 
-const list = ref<User[]>([])
+const list = ref<User[]>([]);
 
 function getList() {
-  axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-    list.value = res.data
-  })
+  axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+    list.value = res.data;
+  });
 }
 
 onMounted(() => {
-  getList()
-})
-
+  getList();
+});
 </script>
 
 <style scoped></style>
