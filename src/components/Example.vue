@@ -28,6 +28,7 @@ const age = ref(18)
 function onSubmit(){
   console.log({ name:name.value , age:age.value})
 }
+
 </script>
 
 <style scoped>

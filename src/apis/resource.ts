@@ -31,4 +31,12 @@ export const todos: ResourceParams = {
     method: "PATCH",
     url: "/todos/{id}",
   },
+  // get_incomplete_todo: {
+  //   method: "GET",
+  //   url: "/todos?isCompleted:false",
+  // },
+  // get_complete_todo: {
+  //   method: "GET",
+  //   url: "/todos?isCompleted:true",
+  // },
 };
