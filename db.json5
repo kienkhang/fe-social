@@ -1,3 +1,19 @@
 {
-  todos: [],
+  todos: [
+    {
+      id: 1,
+      text: "Go to the store",
+      completed: false,
+    },
+    {
+      id: 2,
+      text: "Buy some food",
+      completed: false,
+    },
+    {
+      id: 3,
+      text: "Feed the cat",
+      completed: false,
+    },
+  ],
 }
