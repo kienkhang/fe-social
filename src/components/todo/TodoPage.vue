@@ -1,50 +1,48 @@
 <template lang="pug">
-div
-  div.mt-5
-    input(v-model="todoInput" @keyup.enter="handleCreateTodo" class="h-10 p-2 m-2 text-white bg-purple-400 rounded-lg w-80")
-    button(@click="handleCreateTodo" class="h-10 p-2 m-2 text-white bg-purple-400 rounded-lg w-80") Create Todo
-    TodoList(:listTodo="listTodo")
-    
-    div(class="flex flex-row justify-between p-2 m-2 text-white bg-purple-400 rounded-lg w-80")
-      TodoItem(:id="todo.id" :listTodo="listTodo" :completed="todo?.completed" @deleteTodo="handleDelete")
+div(class="flex flex-col items-center justify-center h-screen contain bg-slate-600") 
+    .flex.flex-row.items-center.gap-4
+      input(v-model="updatedTitle" class="w-[300px] h-[40px] rounded-md p-2" @keyup.enter="addNewTask(updatedTitle)" placeholder="Enter new task")
       
+      button(@click="addNewTask(updatedTitle)" class="p-2 text-white bg-green-500 rounded-md") Add Task
+    .flex.flex-col.gap-12(class="w-[700px]")
+        TodoList(v-model:listTodoItem="listTaskTodo" v-model:isUpdated="isUpdated")
+        TodoDone(v-model:listTodoItem="listTaskCompleted" )       
 </template>
-
-<script setup>
-import { ref, computed, onMounted } from "vue";
+<script setup lang="ts">
 import TodoList from "./TodoList.vue";
-import TodoItem from "./TodoItem.vue";
-import { createTodo, getTodos } from "@/apis/todos";
-import todoItem from "@/types/todoItem";
+import TodoDone from "./TodoDone.vue";
+import type { todoItem } from "@/types/todoItem";
+import { onMounted, ref, computed, watch } from "vue";
+import { getTodos, createTodo } from "@/apis/todos.ts";
+const listTodos = ref<todoItem[]>([]);
+const taskDetail = ref<todoItem>();
+const updatedTitle = ref("");
+const isUpdated = ref(false);
 
-const todoInput = ref < string > "";
-const listTodo = ref < todoItem > [];
-
-const completedTodos = computed(() =>
-  listTodo.value.filter((item) => item.completed)
+function addNewTask(title: string) {
+  const newTask = {
+    id: listTodos.value.length + 1,
+    title: title,
+    isCompleted: false,
+  };
+  createTodo(newTask).then((res) => {
+    listTodos.value.push(res);
+    alert("Task added successfully");
+  });
+  updatedTitle.value = "";
+}
+const listTaskTodo = computed(() =>
+  listTodos.value.filter((item) => !item.isCompleted)
 );
-const filteredList = computed(() =>
-  listTodo.value.filter((item) => !item.completed)
+
+const listTaskCompleted = computed(() =>
+  listTodos.value.filter((item) => item.isCompleted)
 );
 
 onMounted(() => {
   getTodos().then((res) => {
-    listTodo.value = res;
+    listTodos.value = res;
   });
 });
-
-function handleCreateTodo() {
-  if (todoInput.value) {
-    createTodo({
-      id: listTodo.value.length + 1,
-      title: todoInput.value,
-      completed: false,
-    }).then((res) => {
-      listTodo.value.push(res);
-      todoInput.value = "";
-    });
-  }
-}
 </script>
-
-<style lang="" scoped></style>
+<style scoped></style>
