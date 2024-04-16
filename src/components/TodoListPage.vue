@@ -1,11 +1,22 @@
 <template lang="pug">
 .w-full.flex.justify-center.items-center.p-5
   div(class="w-[800px] border-4 border-blue-700 rounded-xl h-[1100px] bg-blue-500 p-6 flex flex-col gap-6")
-    template(v-if="editTask !== null")
+    div(v-if="editTask !== null")
       EditTask(:todo="editTask" @taskUpdated="handleTaskUpdated" )
-    template(v-else)
-      AddTask(@taskAdded="handleTaskAdded")
-    TaskList(:listTodos="incompleteTodos" @edit="handleEditTask" :deleteTask="handleTaskDeleted" :completeTask="handleCompleteTask" :isDone="false")
+      //- TodoInput(:isEdit='true' @edit='handleTaskUpdated')
+    div(v-else)
+      //- TodoInput(:isEdit='false' @add='handleTaskAdded')
+      AddTask(@add="handleTaskAdded")
+
+    //- Incomplete task
+    TaskList(
+      :listTodos="incompleteTodos" 
+      :isDone="false" 
+      @edit="handleEditTask" 
+      @delete="handleTaskDeleted" 
+      @complete="handleCompleteTask"
+    )
+    //- Completed task
     TaskList(:listTodos="completeTodos" :isDone="true")
 
 </template>
@@ -50,7 +61,8 @@ async function fetchCompleteTodos() {
   }
 }
 
-function handleTaskAdded(data) {
+function handleTaskAdded(data: Todo) {
+  console.log("🐣🦆 ~ handleTaskAdded ~ data:", data);
   incompleteTodos.value.push(data);
 }
 
@@ -73,7 +85,7 @@ function handleEditTask(todo: Todo) {
   editTask.value = todo;
 }
 
-function handleTaskUpdated(updatedTask) {
+function handleTaskUpdated(updatedTask: Todo) {
   const index = incompleteTodos.value.findIndex(
     (todo) => todo.id === updatedTask.id
   );

@@ -12,15 +12,21 @@ import TaskItem from "./TaskItem.vue";
 
 const props = defineProps<{
   listTodos: Todo[];
-  deleteTask: Function;
-  completeTask: Function;
+  // deleteTask: Function;
+  // completeTask: Function;
   isDone: boolean;
 }>();
 
-const emit = defineEmits(["edit"]);
+// const emit = defineEmits(["edit"]);
+const emit = defineEmits<{
+  (e: "edit", todo: Todo): void;
+  (e: "delete", todoId: string | number): void;
+  (e: "complete", todoId: string | number): void;
+}>();
 
 function handleDelete(todoId: string | number) {
-  props.deleteTask(todoId);
+  // props.deleteTask(todoId);
+  emit("delete", todoId);
 }
 
 function handleEdit(todo: Todo) {
@@ -28,6 +34,7 @@ function handleEdit(todo: Todo) {
 }
 
 function handleComplete(todoId: string | number) {
-  props.completeTask(todoId);
+  // props.completeTask(todoId);
+  emit("complete", todoId);
 }
 </script>
