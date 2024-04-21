@@ -1,4 +1,13 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import router from "./router/route";
 
-createApp(App).mount("#app");
+let app = createApp(App);
+
+function initCommon() {
+  app.use(router);
+  app.mount("#app");
+}
+
+initCommon();
+// createApp(App).mount("#app");

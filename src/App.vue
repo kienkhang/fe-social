@@ -1,9 +1,9 @@
 <template lang="pug">
-StudyPage
+//- StudyPage
+router-view
 </template>
 <script setup lang="ts">
-import StudyPage from "./components/study/StudyPage.vue";
-
+// import StudyPage from "./components/study/StudyPage.vue";
 </script>
 <style>
 @import "./styles/main.css";
