@@ -1,4 +1,4 @@
-import { todos } from "./resource";
+import { events, todos } from "./resource";
 import axios from "axios";
 import env from "../env";
 import _omit from "lodash-es/omit";
@@ -34,6 +34,7 @@ const http = {
 // =========== REGION MAIN RESOURCE =========
 const resource = {
   todos,
+  events,
 };
 // =========== END REGION MAIN RESOURCE =========
 

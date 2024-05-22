@@ -32,3 +32,26 @@ export const todos: ResourceParams = {
     url: "/todos/{id}",
   },
 };
+
+export const events: ResourceParams = {
+  get_all: {
+    method: "GET",
+    url: "/events",
+  },
+  get_id: {
+    method: "GET",
+    url: "/events/{id}",
+  },
+  create_event: {
+    method: "POST",
+    url: "/events",
+  },
+  delete_event: {
+    method: "DELETE",
+    url: "/events/{id}",
+  },
+  update_event: {
+    method: "PATCH",
+    url: "/events/{id}",
+  },
+};
