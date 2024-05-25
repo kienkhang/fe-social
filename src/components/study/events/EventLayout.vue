@@ -2,11 +2,11 @@
 div
   h3.title.font-bold {{ event?.name }}
   .tab.flex.items-center.gap-4(v-if='event')
-    router-link.text-green-500.underline(:to='{ name:"events-id", params: { id: event.id } }') Detail
+    router-link.text-green-500.underline(:to='{ name:"events-id-index", params: { id: event.id } }') Detail
     router-link.text-green-500.underline(:to='{ name:"events-id-register", params: { id: event.id } }') Register
     router-link.text-green-500.underline(:to='{ name:"events-id-edit", params: { id: event.id } }') Edit
 
-  router-view(:event='event' v-if='event')
+  router-view(:event='event' :key='event.id' v-if='event')
 
 </template>
 
@@ -34,8 +34,6 @@ async function fetchEvent() {
 }
 
 onMounted(() => {
-  console.log("🐣🦆 ~ route:", { ...route });
-
   fetchEvent();
 });
 </script>
