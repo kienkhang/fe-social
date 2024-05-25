@@ -6,19 +6,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { getEvents } from "@/apis/events";
+import { onMounted } from "vue";
+
 import EventListsItem from "./EventListsItem.vue";
+import { useEventStore } from "@/composables/useEvent";
+import { storeToRefs } from "pinia";
 
-const lists = ref<{ id: string; name: string; date: string }[]>([]);
-async function getEventList() {
-  try {
-    const res = await getEvents();
-
-    lists.value = res;
-    console.log("🐣🦆 ~ getEventList ~ res:", res);
-  } catch (error) {}
-}
+const { lists } = storeToRefs(useEventStore());
+const { getEventList } = useEventStore();
 
 onMounted(() => {
   getEventList();

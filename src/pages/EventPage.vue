@@ -25,15 +25,21 @@ div
 import { ref } from "vue";
 import { createEvent } from "@/apis/events";
 import EventLists from "@/components/study/events/EventLists.vue";
+import { useEventStore } from "@/composables/useEvent";
+import { storeToRefs } from "pinia";
 
 const name = ref("");
 const date = ref(null);
+
+const { lists } = storeToRefs(useEventStore());
 
 async function onSubmit() {
   const res = await createEvent({
     name: name.value,
     date: date.value,
   });
+
+  lists.value.push(res);
   console.log("res", res);
 }
 </script>
