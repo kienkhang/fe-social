@@ -9,12 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@iconify/utils": "^2.1.24",
     "@types/lodash-es": "^4.17.12",
     "axios": "^1.6.5",
+    "clsx": "^2.1.1",
     "json-server": "1.0.0-alpha.23",
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.7",
     "pug": "^3.0.2",
+    "tailwind-merge": "^2.3.0",
+    "vite-svg-loader": "^5.1.0",
     "vue": "^3.3.11",
     "vue-router": "4"
   },

@@ -4,11 +4,12 @@
 </template>
 
 <script setup lang="ts">
-import { HTMLAttributes, computed } from "vue";
+import { type HTMLAttributes, computed } from "vue";
 import { encodeSvgForCss } from "@iconify/utils/lib/svg/encode-svg-for-css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 // https://bl.ocks.org/jennyknuth/222825e315d45a738ed9d6e04c7a88d0
-// https://antfu.me/posts/icons-in-pure-css
+// https://antfu.me/posts/icons-in-pure-css'
+// https://github.com/unocss/unocss/blob/main/packages/preset-icons/src/core.ts
 const props = withDefaults(
   defineProps<{
     icon: string;
@@ -19,7 +20,7 @@ const props = withDefaults(
     mode: "auto",
   }
 );
-
+// src\assets\vue.svg
 // function encodeSvg(svg: string) {
 //   return svg
 //     .replace('<svg', ~svg.indexOf('xmlns') ? '<svg' : '<svg xmlns="http://www.w3.org/2000/svg"')
