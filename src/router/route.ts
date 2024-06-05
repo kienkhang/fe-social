@@ -10,8 +10,8 @@ import initNotFoundLayout from "./notFoundLayout";
 const routes: RouteRecordRaw[] = [];
 
 function generateLayout() {
-  initMainLayout(routes);
-  initNotFoundLayout(routes);
+  initMainLayout(routes); // routes = [{mainLayout}]
+  initNotFoundLayout(routes); // routes = [{mainLayout}, {notfoundLayout}]
 }
 
 generateLayout();
