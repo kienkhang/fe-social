@@ -6,10 +6,11 @@ import EventDetail from "@/components/study/events/EventDetail.vue";
 import EventEdit from "@/components/study/events/EventEdit.vue";
 import EventRegister from "@/components/study/events/EventRegister.vue";
 import EventLayout from "@/components/study/events/EventLayout.vue";
+import EmptyLayout from "@/layouts/EmptyLayout.vue";
 function initMainLayout(routes: any[]) {
   const mainLayout = {
     path: "/",
-    component: MainLayout,
+    component: EmptyLayout,
     children: [
       {
         path: "",

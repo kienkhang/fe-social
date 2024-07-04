@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@iconify/utils": "^2.1.24",
+    "@phanmn/chat3-sdk": "^0.0.8",
     "@types/lodash-es": "^4.17.12",
     "axios": "^1.6.5",
     "clsx": "^2.1.1",
