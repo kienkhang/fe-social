@@ -7,6 +7,8 @@ div
 <script setup lang="ts">
 import { Spin, Client } from "@phanmn/chat3-sdk";
 import { onMounted, ref } from "vue";
+import SDK from "social-live-js-sdk";
+
 const root = ref<HTMLElement>();
 
 const appearance = {
@@ -28,7 +30,9 @@ const appearance = {
   width: "100%",
   height: "800px",
   spinTitle: "SPIKING SPIN TO WIN",
-  resultMessage: "pkg-placeholder",
+  resultMessage:
+    "All rewards will be automatically added to your Spiking wallet within 10 minutes.",
+  rulesHtml: `String format with variables using a template literal`,
 };
 let spin: Spin;
 const isLoading = ref(false);
