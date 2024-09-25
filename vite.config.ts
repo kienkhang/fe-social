@@ -16,4 +16,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    minify: 'esbuild',
+
+  },
+  css: {
+    modules: {
+      generateScopedName: '[hash:base64:8]',
+    }
+  }
 });

@@ -11,7 +11,7 @@ import SocialLivePage from "@/pages/SocialLivePage.vue";
 function initMainLayout(routes: any[]) {
   const mainLayout = {
     path: "/",
-    component: EmptyLayout,
+    component: MainLayout,
     children: [
       {
         path: "",

@@ -1,9 +1,10 @@
 <template lang="pug">
 div
   button.p-3.border.rounded-lg(@click='openDialog') Open dialog
-  button.p-3.border.rounded-lg(@click='checkLogin') Request
+  button.p-3.border.rounded-l.text-white.bg-purple-500(@click='checkLogin') Request
+  button.p-3.border.rounded-lg.text-white.bg-yellow-500(@click='refreshToken') Renew token
   div.text-xl(class='' v-show='isLoading') Loading .......
-  div.bg-red-100.h-dvh(ref='root' v-show='!isLoading')
+  div.bg-black.h-dvh(ref='root' v-show='!isLoading')
 
 </template>
 
@@ -18,16 +19,19 @@ let auth: Auth;
 const appId = "crhbm7saddg9o350c950";
 const isLoading = ref(false);
 
-const appearance: Appearance = {
-  background: "black",
-};
+const appearance: Appearance | null = null;
 
 function openDialog() {
   auth.openDialog();
 }
 
 async function checkLogin() {
-  const res = await auth.isLoggedIn(appId);
+  const res = await auth.logout(appId);
+  console.log("🐣🦆 ~ checkLogin ~ res:", res);
+}
+
+async function refreshToken() {
+  const res = await auth.refreshToken(appId);
   console.log("🐣🦆 ~ checkLogin ~ res:", res);
 }
 
@@ -43,4 +47,4 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style></style>
