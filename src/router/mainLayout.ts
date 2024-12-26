@@ -7,7 +7,7 @@ import EventEdit from "@/components/study/events/EventEdit.vue";
 import EventRegister from "@/components/study/events/EventRegister.vue";
 import EventLayout from "@/components/study/events/EventLayout.vue";
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
-import SocialLivePage from "@/pages/SocialLivePage.vue";
+import DatagramPage from "@/pages/DatagramPage.vue";
 function initMainLayout(routes: any[]) {
   const mainLayout = {
     path: "/",
@@ -21,7 +21,7 @@ function initMainLayout(routes: any[]) {
       {
         path: "wallet",
         name: "wallet",
-        component: SocialLivePage,
+        component: DatagramPage,
       },
       {
         path: "events",
