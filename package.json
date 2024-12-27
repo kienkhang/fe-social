@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@datagram-network/conference-sdk": "^1.0.2",
     "@iconify/utils": "^2.1.24",
     "@phanmn/chat3-sdk": "^0.0.8",
     "@types/lodash-es": "^4.17.12",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@vitejs/plugin-vue": "^4.5.2",
-    "@vue/language-plugin-pug": "^2.0.7",
+    "@vue/language-plugin-pug": "^2.2.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "stylus": "^0.64.0",
